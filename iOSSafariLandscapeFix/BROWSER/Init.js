@@ -73,18 +73,6 @@ iOSSafariLandscapeFix.Init = METHOD({
 			DELAY(1, () => {
 				EVENT.fireAll('resize');
 			});
-			
-			EVENT_LOW('touchstart', (e) => {
-				if (wrapper.getStyle('visibility') === 'hidden') {
-					e.stopDefault();
-				}
-			});
-			
-			EVENT_LOW('touchmove', (e) => {
-				if (wrapper.getStyle('visibility') === 'hidden') {
-					e.stopDefault();
-				}
-			});
 		}
 	}
 });
