@@ -1,6 +1,18 @@
 iOSSafariLandscapeFix.Init = METHOD({
 
-	run : (dom) => {
+	run : (dom, handlers) => {
+		//REQUIRED: dom
+		//OPTIONAL: handlers
+		//OPTIONAL: handlers.pause
+		//OPTIONAL: handlers.resume
+		
+		let pauseHandler;
+		let resumHandler;
+		
+		if (handlers !== undefined) {
+			pauseHandler = handlers.pause;
+			resumHandler = handlers.resume;
+		}
 		
 		if (INFO.getOSName() === 'iOS' && INFO.getBrowserName() === 'Safari') {
 			
@@ -12,7 +24,9 @@ iOSSafariLandscapeFix.Init = METHOD({
 					left : 0,
 					top : 0,
 					width : '100%',
-					height : 999999
+					height : 9999999,
+					zIndex : 9999999,
+					visibility : 'hidden'
 				},
 				c : content = DIV({
 					c : dom
@@ -20,12 +34,6 @@ iOSSafariLandscapeFix.Init = METHOD({
 			}).appendTo(BODY);
 			
 			EVENT('resize', RAR(() => {
-				
-				if (wrapper !== undefined) {
-					wrapper.addStyle({
-						visibility : 'hidden'
-					});
-				}
 				
 				let winWidth = WIN_WIDTH();
 				let winHeight = WIN_HEIGHT();
@@ -43,6 +51,20 @@ iOSSafariLandscapeFix.Init = METHOD({
 					wrapper.addStyle({
 						visibility : 'visible'
 					});
+					
+					if (resumHandler !== undefined) {
+						resumHandler();
+					}
+				}
+				
+				else {
+					wrapper.addStyle({
+						visibility : 'hidden'
+					});
+					
+					if (pauseHandler !== undefined) {
+						pauseHandler();
+					}
 				}
 				
 				scrollTo(0, 0);

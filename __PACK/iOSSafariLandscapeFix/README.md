@@ -28,6 +28,11 @@ Sample.MAIN = METHOD({
 });
 ```
 
+![Screenshot](https://raw.githubusercontent.com/Hanul/iOSSafariLandscapeFix/master/img/1.png)
+![Screenshot](https://raw.githubusercontent.com/Hanul/iOSSafariLandscapeFix/master/img/2.png)
+![Screenshot](https://raw.githubusercontent.com/Hanul/iOSSafariLandscapeFix/master/img/3.png)
+![Screenshot](https://raw.githubusercontent.com/Hanul/iOSSafariLandscapeFix/master/img/4.png)
+
 ## 설치하기
 프로젝트의 `DEPENDENCY` 파일에 `Hanul/iOSSafariLandscapeFix`를 추가합니다.
 
