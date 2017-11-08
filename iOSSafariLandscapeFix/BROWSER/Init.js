@@ -52,8 +52,8 @@ iOSSafariLandscapeFix.Init = METHOD({
 						visibility : 'visible'
 					});
 					
-					if (resumHandler !== undefined) {
-						resumHandler();
+					if (pauseHandler !== undefined) {
+						pauseHandler();
 					}
 				}
 				
@@ -62,13 +62,17 @@ iOSSafariLandscapeFix.Init = METHOD({
 						visibility : 'hidden'
 					});
 					
-					if (pauseHandler !== undefined) {
-						pauseHandler();
+					if (resumHandler !== undefined) {
+						resumHandler();
 					}
 				}
 				
 				scrollTo(0, 0);
 			}));
+			
+			DELAY(1, () => {
+				EVENT.fireAll('resize');
+			});
 			
 			EVENT_LOW('touchstart', (e) => {
 				if (wrapper.getStyle('visibility') === 'hidden') {
