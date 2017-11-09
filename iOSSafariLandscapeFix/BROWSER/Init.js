@@ -43,10 +43,16 @@ iOSSafariLandscapeFix.Init = METHOD({
 				});
 				
 				if (winWidth > winHeight && (
+					// iPhone 4
 					(winWidth === 480 && winHeight !== 320) ||
+					// iPhone 5
 					(winWidth === 568 && winHeight !== 320) ||
+					// iPhone 6, 7, 8
 					(winWidth === 667 && winHeight !== 375) ||
-					(winWidth === 736 && winHeight !== 414)
+					// iPhone 6, 7, 8 Plus
+					(winWidth === 736 && winHeight !== 414) ||
+					// iPhone X
+					(winWidth === 812 && winHeight !== 375)
 				)) {
 					wrapper.addStyle({
 						visibility : 'visible'
